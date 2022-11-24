@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { httpErrorHandler } from "../utils.ts/httpErrorHandler";
-import { insertUser, getAllUsers, getUserById } from "../services/user.service";
+import { insertUser, getAllUsers, getUserById, removeUser, updateUser } from "../services/user.service";
 
 export const getUsers = async (req: Request, res: Response) => {
   try {
-    const responseUsers = await getAllUsers();
-    res.json({ data: responseUsers });
+    const resp = await getAllUsers();
+    res.json({ data: resp });
   } catch (e) {
     httpErrorHandler(res, "GET_USERS", e);
   }
@@ -13,8 +13,8 @@ export const getUsers = async (req: Request, res: Response) => {
 
 export const getUser = async (req: Request, res: Response) => {
   try {
-    const responseUser = await getUserById(req.params.id);
-    res.json({ responseUser });
+    const resp = await getUserById(req.params.id);
+    res.json({ resp });
   } catch (e) {
     httpErrorHandler(res, "GET_USER", e);
   }
@@ -22,24 +22,26 @@ export const getUser = async (req: Request, res: Response) => {
 
 export const postUser = async (req: Request, res: Response) => {
   try {
-    const responseUser = await insertUser(req.body);
-    res.json({ data: responseUser, desc: "Post done successfully" });
+    const resp = await insertUser(req.body);
+    res.json({ data: resp, desc: "Post done successfully" });
   } catch (e) {
     httpErrorHandler(res, "POST_USER", e);
   }
 };
 
-export const updateUser = (req: Request, res: Response) => {
+export const putUser = async (req: Request, res: Response) => {
   try {
-    // res.json({data: "hello"})
+    const resp = await updateUser(req.params.id, req.body)
+    res.json({data: resp, desc: "Updated!"})
   } catch (e) {
     httpErrorHandler(res, "UPDATE_USER", e);
   }
 };
 
-export const deleteUser = (req: Request, res: Response) => {
+export const deleteUser = async (req: Request, res: Response) => {
   try {
-    // res.json({data: "hello"})
+    const resp = await removeUser(req.params.id)
+    res.json({ data: resp , desc: "Deleted!"});
   } catch (e) {
     httpErrorHandler(res, "DELETE_USER", e);
   }
