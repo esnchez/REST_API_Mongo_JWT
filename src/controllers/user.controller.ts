@@ -20,19 +20,20 @@ export const getUser = async (req: Request, res: Response) => {
   }
 };
 
+
 export const postUser = async (req: Request, res: Response) => {
   try {
     const resp = await insertUser(req.body);
-    res.json({ data: resp, desc: "Post done successfully" });
+    res.json({ data: resp});
   } catch (e) {
-    httpErrorHandler(res, "POST_USER", e);
+    httpErrorHandler(res, "CREATE_USER", e);
   }
 };
 
 export const putUser = async (req: Request, res: Response) => {
   try {
     const resp = await updateUser(req.params.id, req.body)
-    res.json({data: resp, desc: "Updated!"})
+    res.json({data: resp})
   } catch (e) {
     httpErrorHandler(res, "UPDATE_USER", e);
   }
@@ -41,7 +42,7 @@ export const putUser = async (req: Request, res: Response) => {
 export const deleteUser = async (req: Request, res: Response) => {
   try {
     const resp = await removeUser(req.params.id)
-    res.json({ data: resp , desc: "Deleted!"});
+    res.json({ data: resp });
   } catch (e) {
     httpErrorHandler(res, "DELETE_USER", e);
   }

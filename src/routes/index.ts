@@ -9,6 +9,7 @@ const cleanRoute = (file: string): string | undefined => {
 }
 
 //function to add subrouters to our main router object dynamically  
+//we can give default folder route by adding filename to use path '/'
 const loadRoute = (fileName: string | undefined) => {
     import(`./${fileName}`).then((moduleRouter) => {
         router.use(`/`, moduleRouter.router)
