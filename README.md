@@ -3,6 +3,9 @@
 System design will follow the three layer architecture, similar to MVC pattern. 
 
 
+Run the mongo image
+sudo docker run --name mongodb -d -p 27017:27017 mongo:latest
+
 
 Project initialization
 

@@ -5,7 +5,7 @@ export const getUsers = (req: Request, res: Response) => {
     try {
         // res.json({data: "hello"})
     } catch (e) {
-        httpErrorHandler(res, "GET_USERS")
+        httpErrorHandler(res, "GET_USERS", e)
     }
 }
 
@@ -13,7 +13,7 @@ export const getUser = (req: Request, res: Response) => {
     try {
         // res.json({data: "hello"})
     } catch (e) {
-        httpErrorHandler(res, "GET_USER")
+        httpErrorHandler(res, "GET_USER", e)
     }
 }
 
@@ -21,7 +21,7 @@ export const postUser = (req: Request, res: Response) => {
     try {
         // res.json({data: "hello"})
     } catch (e) {
-        httpErrorHandler(res, "POST_USER")
+        httpErrorHandler(res, "POST_USER", e)
     }
 }
 
@@ -29,7 +29,7 @@ export const updateUser = (req: Request, res: Response) => {
     try {
         // res.json({data: "hello"})
     } catch (e) {
-        httpErrorHandler(res, "UPDATE_USER")
+        httpErrorHandler(res, "UPDATE_USER", e)
     }
 }
 
@@ -37,6 +37,6 @@ export const deleteUser = (req: Request, res: Response) => {
     try {
         // res.json({data: "hello"})
     } catch (e) {
-        httpErrorHandler(res, "DELETE_USER")
+        httpErrorHandler(res, "DELETE_USER", e)
     }
 }
