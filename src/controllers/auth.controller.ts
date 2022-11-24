@@ -16,7 +16,8 @@ export const signup = async (req: Request, res: Response) => {
 
 export const login = async (req: Request, res: Response) => {
   try {
-    const resp = await loginUser(req.body)
+    const {email, password} = req.body
+    const resp = await loginUser(email, password)
     res.json({ data: resp });
   } catch (e) {
     httpErrorHandler(res, "LOGIN_USER", e);

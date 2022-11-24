@@ -5,6 +5,6 @@ export const encrypt = async (password: string) => {
 } 
 
 
-const verify = async() => {
-    
+export const verify = async(password: string, pwHashed: string) => {
+    return await compare(password,pwHashed)    
 } 
