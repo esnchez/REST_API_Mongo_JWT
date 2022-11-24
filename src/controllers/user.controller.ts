@@ -24,6 +24,7 @@ export const getUser = async (req: Request, res: Response) => {
 export const postUser = async (req: Request, res: Response) => {
   try {
     const resp = await insertUser(req.body);
+    //TODO
     res.json({ data: resp});
   } catch (e) {
     httpErrorHandler(res, "CREATE_USER", e);

@@ -5,12 +5,14 @@ import { userModel } from "../models/user.model";
 
 export const insertUser = async ({firstName, lastName, email, password, role, discordNumber}: IUser) => {
     const checkUser = await userModel.findOne({email : email})
+    //TODO: Bring the error to the controller to handle it. 
     if(checkUser){
         const error : IError = {
             Description: "User already created! "
         }
       return error
     }
+    // 
     const pwHashed = await encrypt(password)
           
   return await userModel.create({firstName, lastName, email, password: pwHashed, role, discordNumber });
