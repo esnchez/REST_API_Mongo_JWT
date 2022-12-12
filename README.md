@@ -1,17 +1,14 @@
-### API REST development in typescript
+## Node.js REST API in Typescript
 
-System design will follow the three layer architecture, similar to MVC pattern. 
+System design will follow the three layered architecture pattern, similar to MVC pattern, where the couple controller-service manage all Http requests methods related to a single entity. 
 
 
-Run the mongo image
+### Build up MongoDB container
 sudo docker run --name mongodb -d -p 27017:27017 mongo:latest
 
+Once the container is running, you can run the app in development mode using nodemon by:
 
-Project initialization
-
-Initialize a package.json: npm init -y
-Initialize a tsconfig.json: tsc --init 
-Install dependencies and dev-depencies. 
-The following dependencies used are express, nodemon (as dev dependency), ....
-Set dev script at package.json file. 
+```
+npm run dev
+```
 
